@@ -6,6 +6,7 @@ jdk:
 
 env:
 - GRAILS_VERSION=3.2.4
+- GRAILS_VERSION=3.2.8
 
 
 before_install:
