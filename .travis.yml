@@ -5,10 +5,10 @@ jdk:
   - oraclejdk7
 
 script:
-  - ./grailsw refresh-dependencies
-  - ./grailsw test-app -coverage -xml
+  - sudo ./grailsw refresh-dependencies
+  - sudo ./grailsw test-app -coverage -xml
 after_success:
-  - ./grailsw coveralls
+  - sudo ./grailsw coveralls
 
 
 notifications:
