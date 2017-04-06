@@ -4,11 +4,27 @@ jdk:
   - openjdk7
   - oraclejdk7
 
-script:
-  - sudo ./grailsw refresh-dependencies
-  - sudo ./grailsw test-app -coverage -xml
-after_success:
-  - sudo ./grailsw coveralls
+env:
+- GRAILS_VERSION=3.2.4
+
+
+before_install:
+- rm -rf ~/.gvm
+- curl -s get.gvmtool.net > ~/install_gvm.sh
+- chmod 775 ~/install_gvm.sh
+- ~/install_gvm.sh
+- echo "gvm_auto_answer=true" > ~/.gvm/etc/config
+- source ~/.gvm/bin/gvm-init.sh
+- gvm install grails $GRAILS_VERSION || true
+
+branches:
+  only:
+    - master
+    - more-testing
+
+script: grails clean
+     && grails upgrade --non-interactive
+     && grails test-app --non-interactive
 
 
 notifications:
