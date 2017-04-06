@@ -1,0 +1,16 @@
+language: groovy
+
+jdk:
+  - openjdk7
+  - oraclejdk7
+
+script:
+  - ./grailsw refresh-dependencies
+  - ./grailsw test-app -coverage -xml
+after_success:
+  - ./grailsw coveralls
+
+
+notifications:
+  email: false
+  slack: frctristarcollab:jsFS3EN9AbPL31QLUlJL4MTH
