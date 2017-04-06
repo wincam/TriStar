@@ -5,7 +5,6 @@ jdk:
   - oraclejdk7
 
 script:
-  - chmod +x ./grailsw
   - sudo ./grailsw refresh-dependencies
   - sudo ./grailsw test-app -coverage -xml
 after_success:
