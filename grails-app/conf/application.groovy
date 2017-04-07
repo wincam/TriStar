@@ -4,6 +4,9 @@
 grails.plugin.springsecurity.userLookup.userDomainClassName = 'tristar.Account'
 grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'tristar.AccountRole'
 grails.plugin.springsecurity.authority.className = 'tristar.Role'
+grails.plugin.springsecurity.rest.login.usernamePropertyName = 'email'
+grails.plugin.springsecurity.rest.token.rendering.usernamePropertyName = 'email'
+grails.plugin.springsecurity.rest.token.validation.enableAnonymousAccess = true
 grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	[pattern: '/',               access: ['permitAll']],
 	[pattern: '/error',          access: ['permitAll']],
@@ -23,6 +26,8 @@ grails.plugin.springsecurity.filterChain.chainMap = [
 	[pattern: '/**/css/**',      filters: 'none'],
 	[pattern: '/**/images/**',   filters: 'none'],
 	[pattern: '/**/favicon.ico', filters: 'none'],
-	[pattern: '/**',             filters: 'JOINED_FILTERS']
+	[pattern: '/**',             filters: 'JOINED_FILTERS'],
+    [pattern: '/api/login',      filters: 'JOINED_FILTERS,-restTokenValidationFilter,-restExceptionTranslationFilter'],
+    [pattern: '/api/**',         filters: 'anonymousAuthenticationFilter,restTokenValidationFilter,restExceptionTranslationFilter,filterInvocationInterceptor']
 ]
 

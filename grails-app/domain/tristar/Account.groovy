@@ -18,6 +18,8 @@ class Account implements Serializable {
 	boolean accountLocked
 	boolean passwordExpired
 
+	static hasOne = [user: User]
+
 	Account(String username, String password) {
 		this()
 		this.username = username
@@ -45,8 +47,9 @@ class Account implements Serializable {
 	static transients = ['springSecurityService']
 
 	static constraints = {
-		username blank: false, unique: true
+		username blank: false, unique: true, email: true
 		password blank: false
+        user nullable: true
 	}
 
 	static mapping = {
