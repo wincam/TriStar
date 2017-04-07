@@ -33,9 +33,7 @@ class UserController extends RestfulController {
         }
 
         Account account = new Account(request.JSON.email.toString(), request.JSON.password.toString())
-        User user = new User(username: request.JSON.username.toString())
-        account.setUser(user)
-        user.setAccount(account)
+        User user = new User(request.JSON.username.toString(), account)
 
 
         // validates account and user

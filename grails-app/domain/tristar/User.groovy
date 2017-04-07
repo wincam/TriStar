@@ -22,11 +22,14 @@ class User {
         id generator:'assigned'
     }
 
-    /**
-     * Called before validation, generates new id value
-     */
-    def beforeValidate() {
-        IDService.assignID(this, User)
+
+    User (String username, Account account){
+        this()
+        this.id = IDService.assignID(User)
+        this.username = username
+        this.account = account
+        account.user = this
     }
+
 
 }

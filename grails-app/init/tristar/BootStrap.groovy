@@ -16,7 +16,7 @@ class BootStrap {
             return returnSet
         }
 
-        JSON.registerObjectMarshaller(User) {
+        JSON.registerObjectMarshaller(Team) {
             def returnSet = [:]
             returnSet.captains = it.captains.each {it.getUsername()}
             returnSet.members = it.members.each {it.getUsername()}

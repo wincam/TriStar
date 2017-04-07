@@ -11,20 +11,20 @@ import java.security.SecureRandom
 class IDService {
 
     /**
-     * Assigns a random ID to any domain class
-     * @param domainData    Domain to assign ID to
+     * Generates a random ID to any domain class
      * @param domainClass   Class of domain
+     * @return  New ID
      */
-    def assignID(domainData, domainClass) {
-        if (domainData.id == null){
-            def generator = new SecureRandom()
-            while(true){
+    long assignID(Class domainClass) {
+        def generator = new SecureRandom()
+        long newID
+        while(true){
 
-                domainData.id = generator.nextLong()
-                // make sure id doesn't already exist
-                if (domainClass.findById(domainData.id) == null) break
-            }
-
+            newID = generator.nextLong()
+            // make sure id doesn't already exist
+            if (domainClass.findById(newID) == null) break
         }
+
+        return newID
     }
 }
