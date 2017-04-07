@@ -1,11 +1,16 @@
 package tristar
 
-import java.security.SecureRandom
-
+/**
+ * Domain to represent users
+ */
 class User {
     transient springSecurityService
+    transient IDService
 
     String username
+
+    static hasMany = [teams: Team]
+
     static belongsTo = [account: Account]
 
     static constraints = {
@@ -17,17 +22,11 @@ class User {
         id generator:'assigned'
     }
 
+    /**
+     * Called before validation, generates new id value
+     */
     def beforeValidate() {
-        if (this.id == null){
-            def generator = new SecureRandom()
-            while(true){
-
-                this.id = generator.nextLong()
-                if (User.findById(this.id) == null) break
-            }
-
-        }
-
+        IDService.assignID(this, User)
     }
 
 }
