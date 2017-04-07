@@ -1,2 +1,13 @@
-exclude_paths:
- - grails-app/assets/vendor/**/*
+engines:
+  eslint:
+    enabled: true
+  csslint:
+    enabled: true
+  duplication:
+  	enabled: true
+    config:
+    	languages:
+      - css
+      - javascript
+  exclude_paths:
+    - grails-app/assets/vendor/**/*
