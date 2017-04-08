@@ -4,6 +4,9 @@ import grails.plugin.springsecurity.annotation.Secured
 import grails.rest.*
 import grails.converters.*
 
+/**
+ * Controller that acts on a single Team at a time
+ */
 @Secured(['ROLE_USER'])
 class TeamController extends RestfulController{
 	static responseFormats = ['json']
