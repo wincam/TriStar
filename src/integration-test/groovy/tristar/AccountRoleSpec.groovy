@@ -13,13 +13,13 @@ class AccountRoleSpec extends Specification {
         new Role("USER_ROLE").save(flush: true)
         new Role("USER_ADMIN").save(flush: true)
 
-        def bob = new Account(username: "bob@test.com", password: "abc123")
+        def bob = new Account("bob@test.com", "abc123")
         bob.save(flush: true)
 
-        def carl = new Account(username: "carl@test.com", password: "abc123")
+        def carl = new Account("carl@test.com", "abc123")
         carl.save(flush: true)
 
-        def mark = new Account(username: "mark@test.com", password: "abc123")
+        def mark = new Account("mark@test.com", "abc123")
         mark.save(flush: true)
 
         AccountRole.create(bob, Role.findByAuthority("USER_ROLE"))
