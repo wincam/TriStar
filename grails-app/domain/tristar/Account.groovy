@@ -10,6 +10,7 @@ class Account implements Serializable {
 	private static final long serialVersionUID = 1
 
 	transient springSecurityService
+    transient IDService
 
 	String username
 	String password
@@ -22,6 +23,7 @@ class Account implements Serializable {
 
 	Account(String username, String password) {
 		this()
+        this.id = IDService.assignID(Account)
 		this.username = username
 		this.password = password
 	}
@@ -53,6 +55,7 @@ class Account implements Serializable {
 	}
 
 	static mapping = {
+        id generator:'assigned'
 		password column: '`password`'
 	}
 }
