@@ -9,7 +9,7 @@ class User {
 
     String username
 
-    static hasMany = [teams: Team]
+    static hasMany = [teamMember: Team, teamCaptain: Team]
 
     static belongsTo = [account: Account]
 
@@ -22,13 +22,14 @@ class User {
         id generator:'assigned'
     }
 
+    static mappedBy = [teamMember: "members", teamCaptain: "captains"]
+
 
     User (String username, Account account){
         this()
         this.id = IDService.assignID(User)
         this.username = username
         this.account = account
-        account.user = this
     }
 
 

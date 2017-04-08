@@ -22,13 +22,13 @@ class Team {
         id generator:'assigned'
     }
 
+    static mappedBy = [members: "teamMember", captains: "teamCaptain"]
+
     Team (String name, String description, User creator){
         this()
         this.id = IDService.assignID(Team)
         this.name = name
         this.description = description
         this.addToCaptains(creator)
-        creator.addToTeams(this)
-
     }
 }

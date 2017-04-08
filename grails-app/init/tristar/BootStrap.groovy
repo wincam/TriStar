@@ -12,7 +12,8 @@ class BootStrap {
         JSON.registerObjectMarshaller(User) {
             def returnSet = [:]
             returnSet.username = it.username
-            returnSet.teams = it.teams.collect {it.name}
+            returnSet.teamMember = it.teamMember.collect {it.name}
+            returnSet.teamCaptain = it.teamCaptain.collect {it.name}
             return returnSet
         }
 
