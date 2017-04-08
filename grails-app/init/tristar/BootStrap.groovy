@@ -12,14 +12,14 @@ class BootStrap {
         JSON.registerObjectMarshaller(User) {
             def returnSet = [:]
             returnSet.username = it.username
-            returnSet.teams = it.teams.each {it.getName()}
+            returnSet.teams = it.teams.collect {it.name}
             return returnSet
         }
 
         JSON.registerObjectMarshaller(Team) {
             def returnSet = [:]
-            returnSet.captains = it.captains.each {it.getUsername()}
-            returnSet.members = it.members.each {it.getUsername()}
+            returnSet.captains = it.captains.collect {it.getUsername()}
+            returnSet.members = it.members.collect {it.getUsername()}
             return returnSet
         }
 
