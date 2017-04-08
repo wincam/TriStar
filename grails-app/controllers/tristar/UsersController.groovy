@@ -17,6 +17,7 @@ class UsersController extends RestfulController {
 
     /**
      * Renders a list of user names in pages of 20
+     * Optionally will list users not included in groups
      */
     def show() {
         // checks params
@@ -40,8 +41,44 @@ class UsersController extends RestfulController {
             return
         }
 
-        // get list of team names
-        def userList = User.findAll().collect() {it.getUsername()}
+        // get list of user names
+        def userList
+
+        //find user
+        if (params.notcaptain != null || params.notmember != null){
+            def users = User.findAll()
+
+            if (params.notcaptain != null){
+                // user who is not a captain of a particular group
+                Team team = Team.findByName(params.notcaptain.toString())
+
+                // invalid team
+                if (team == null){
+                    render (status: 404, text: "${params.notcaptain.toString()} cannot be found")
+                    return
+                }
+                users.removeAll(team.getCaptains())
+
+            }
+
+            if (params.notmember != null){
+                // user who is not a member of a particular group
+                Team team = Team.findByName(params.notmember.toString())
+
+                // invalid team
+                if (team == null){
+                    render (status: 404, text: "${params.notmember.toString()} cannot be found")
+                    return
+                }
+                users.removeAll(team.getMembers())
+            }
+
+            userList = users.collect() {it.getUsername()}
+        } else {
+            // all users
+            userList = User.findAll().collect() {it.getUsername()}
+        }
+
 
         userList.sort()
 
