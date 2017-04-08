@@ -19,8 +19,23 @@ class UserController extends RestfulController {
         render user as JSON
     }
 
+    @Secured(['ROLE_USER'])
     def show() {
+        // checks params
+        if (params.id == null){
+            render (status: 400, text: "params missing fields")
+            return
+        }
 
+        User user = User.findByUsername(params.id.toString())
+
+        // checks if user is found
+        if (user == null){
+            render (status: 404, text: "${params.id.toString()} does not exist")
+            return
+        }
+
+        render user as JSON
     }
 
 
