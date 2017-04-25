@@ -1,6 +1,8 @@
 package tristar
 
-
+/**
+ * Domain class to represent teams
+ */
 class Team {
 
     transient IDService
@@ -8,7 +10,7 @@ class Team {
     String name
     String description
 
-    static hasMany = [members: User, captains: User]
+    static hasMany = [members: User, captains: User, tasks: Task]
     static belongsTo = [User]
 
     static constraints = {

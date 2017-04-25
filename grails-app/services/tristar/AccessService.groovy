@@ -6,7 +6,7 @@ import grails.transaction.Transactional
 class AccessService {
 
     /**
-     * Detemines if a given account has access to a team
+     * Determines if a given account has access to a team
      * @param account   Account that needs access
      * @param team      Team to check
      * @return          If access is allowed
