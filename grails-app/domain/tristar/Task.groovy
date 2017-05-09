@@ -30,14 +30,15 @@ class Task {
     static mappedBy = [assignees: "assignedTasks"]
 
 
-    Task (String name, String description, Date dueDate, User assigner, List<User> assignees){
+    Task (String name, String description, Date dueDate, Team team, User assigner, List<User> assignees){
         this()
         this.id = IDService.assignID(Task)
         this.name = name
         this.description = description
         this.dueDate = dueDate
+        this.team = team
         this.assigner = assigner
-        this.assignees.addAll(assignees)
+        assignees.each {this.addToAssignees(it)}
         this.open = true
     }
 }

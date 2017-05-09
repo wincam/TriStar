@@ -14,6 +14,8 @@ class BootStrap {
             returnSet.username = it.username
             returnSet.teamMember = it.teamMember.collect {it.name}
             returnSet.teamCaptain = it.teamCaptain.collect {it.name}
+            returnSet.assignedTasks = it.assignedTasks.collect {it.getId()}
+            returnSet.createdTasks = it.createdTasks.collect {it.getId()}
             return returnSet
         }
 
@@ -21,6 +23,7 @@ class BootStrap {
             def returnSet = [:]
             returnSet.captains = it.captains.collect {it.getUsername()}
             returnSet.members = it.members.collect {it.getUsername()}
+            returnSet.tasks = it.tasks.collect {it.getId()}
             return returnSet
         }
 
