@@ -10,6 +10,7 @@ class Task {
     String name
     String description
     Date dueDate
+    Date dateCreated
     Boolean open
 
 
@@ -20,11 +21,15 @@ class Task {
     static constraints = {
         name nullable: false, blank: false
         description nullable: false, blank: false
+        dueDate nullable: false, blank: false
+        dateCreated nullable: false, blank: false
+        open nullable: false
 
     }
 
     static mapping = {
         id generator:'assigned'
+        autoTimestamp true
     }
 
     static mappedBy = [assignees: "assignedTasks"]
@@ -36,6 +41,7 @@ class Task {
         this.name = name
         this.description = description
         this.dueDate = dueDate
+        this.dateCreated = new Date()
         this.team = team
         this.assigner = assigner
         assignees.each {this.addToAssignees(it)}
