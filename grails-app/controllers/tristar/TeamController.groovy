@@ -38,7 +38,7 @@ class TeamController extends RestfulController{
         }
 
         // check for access
-        if (accessService.hasAccess(springSecurityService.currentUser, desiredTeam)){
+        if (!accessService.hasAccess(springSecurityService.currentUser, desiredTeam)){
             render (status: 401, text: "Cannot access ${params.id.toString()}")
             return
         }
