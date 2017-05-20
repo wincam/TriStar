@@ -1,13 +1,29 @@
+---
 engines:
-  eslint:
-    enabled: true
   csslint:
     enabled: true
   duplication:
-  	enabled: true
+    enabled: true
     config:
-    	languages:
-      - css
+      languages:
+      - ruby
       - javascript
-  exclude_paths:
-    - grails-app/assets/vendor/**/*
+      - python
+      - php
+  eslint:
+    enabled: true
+  fixme:
+    enabled: true
+ratings:
+  paths:
+  - "**.css"
+  - "**.inc"
+  - "**.js"
+  - "**.jsx"
+  - "**.module"
+  - "**.php"
+  - "**.py"
+  - "**.rb"
+exclude_paths:
+- node_modules/
+- grails-app/assets/vendor/
