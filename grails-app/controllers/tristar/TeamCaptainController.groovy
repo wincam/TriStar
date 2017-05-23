@@ -4,6 +4,9 @@ import grails.plugin.springsecurity.annotation.Secured
 import grails.rest.*
 import grails.converters.*
 
+/**
+ * Adds and removes team captains for Teams
+ */
 @Secured(['ROLE_USER'])
 class TeamCaptainController extends RestfulController {
 	static responseFormats = ['json']
