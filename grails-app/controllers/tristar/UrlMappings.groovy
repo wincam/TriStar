@@ -7,7 +7,7 @@ class UrlMappings {
         "/api/teamcaptain/$teamID?"(controller: "TeamCaptain"){
             action = [POST:"save"]
         }
-        "/api/teamcaptain/$teamID?/$userID?"(controller: "TeamMember"){
+        "/api/teamcaptain/$teamID?/$userID?"(controller: "TeamCaptain"){
             action = [DELETE:"delete"]
         }
 
