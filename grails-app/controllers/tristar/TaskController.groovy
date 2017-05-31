@@ -99,4 +99,47 @@ class TaskController extends RestfulController {
         newTask.save(flush: true)
         render (status: 201, text: "${request.JSON.name.toString()} created")
     }
+
+    def update() {
+        // checks params
+        if (params.id == null){
+            render (status: 400, text: "params missing fields")
+            return
+        }
+
+        long taskId
+        // get id of task
+        try{
+            taskId = Long.parseLong(params.id.toString())
+        } catch (NumberFormatException){
+            render (status: 400, text: "${params.id.toString()} not an integer")
+            return
+        }
+
+        Task task = Task.findById(taskId)
+
+        // check if task exists
+        if (task == null){
+            render (status: 404, text: "${params.id.toString()} does not exist")
+            return
+        }
+
+        User editor = springSecurityService.currentUser.getUser()
+
+        if (!(task.getAssignees().contains(editor) || (task.getAssigner() == editor))){
+            render(status: 401, text: "Cannot edit ${params.id.toString()}")
+            return
+        }
+
+        // invert open status
+        task.setOpen(!task.getOpen())
+
+        if (!task.validate()){
+            render (status: 400, text: "Updated task not valid")
+            return
+        }
+
+        task.save(flush: true)
+        render (status: 202, text: "${params.id.toString()} updated")
+    }
 }
