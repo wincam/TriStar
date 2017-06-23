@@ -26,4 +26,3 @@ ratings:
   - "**.rb"
 exclude_paths:
 - node_modules/
-- grails-app/assets/vendor/
