@@ -1,86 +1,20 @@
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <title>Welcome to Grails</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta charset="utf-8" />
 
-    <style type="text/css">
-        [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
-            display: none !important;
-        }
-    </style>
+    <title>TriStar</title>
 
-    <asset:stylesheet src="application.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script type="text/javascript" src="/assets/tristar/tristar.js?compile=true"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-    <asset:link rel="icon" href="favicon.ico" type="image/x-ico" />
-
-    <script type="text/javascript">
-        window.contextPath = "${request.contextPath}";
-    </script>
 </head>
 
-<body ng-app="tristar" ng-controller="IndexController as indexCtrl">
+<body ng-app="tristar">
+    <h1>Hello World</h1>
 
-    <div class="navbar navbar-default navbar-static-top" role="navigation">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" ng-click="navExpanded = !navExpanded">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="/#">
-                    <i class="fa grails-icon">
-                        <asset:image src="grails-cupsonly-logo-white.svg"/>
-                    </i> Grails
-                </a>
-            </div>
-            <div class="navbar-collapse collapse" aria-expanded="false" style="height: 0.8px;" uib-collapse="!navExpanded">
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="dropdown" uib-dropdown>
-                        <a href="#" class="dropdown-toggle" uib-dropdown-toggle role="button" aria-haspopup="true" aria-expanded="false">Application Status <span class="caret"></span></a>
-                        <ul class="dropdown-menu" uib-dropdown-menu>
-                            <li><a href="#">Environment: {{indexCtrl.applicationData.environment}}</a></li>
-                            <li><a href="#">App profile: {{indexCtrl.applicationData.appprofile}}</a></li>
-                            <li><a href="#">App version: {{indexCtrl.applicationData.appversion}}</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="#">Grails version: {{indexCtrl.applicationData.grailsversion}}</a></li>
-                            <li><a href="#">Groovy version: {{indexCtrl.applicationData.groovyversion}}</a></li>
-                            <li><a href="#">JVM version: {{indexCtrl.applicationData.jvmversion}}</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="#">Reloading active: {{indexCtrl.applicationData.reloadingagentenabled}}</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown" uib-dropdown>
-                        <a href="#" class="dropdown-toggle" uib-dropdown-toggle role="button" aria-haspopup="true" aria-expanded="false">Artefacts <span class="caret"></span></a>
-                        <ul class="dropdown-menu" uib-dropdown-menu>
-                            <li><a href="#">Controllers: {{indexCtrl.applicationData.artefacts.controllers}}</a></li>
-                            <li><a href="#">Domains: {{indexCtrl.applicationData.artefacts.domains}}</a></li>
-                            <li><a href="#">Services: {{indexCtrl.applicationData.artefacts.services}}</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown" uib-dropdown>
-                        <a href="#" class="dropdown-toggle" uib-dropdown-toggle role="button" aria-haspopup="true" aria-expanded="false">Installed Plugins <span class="caret"></span></a>
-                        <ul class="dropdown-menu" uib-dropdown-menu>
-                            <li ng-repeat="plugin in indexCtrl.applicationData.plugins"><a href="#">{{plugin.name}} - {{plugin.version}}</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <div ui-view></div>
-
-    <div class="footer" role="contentinfo"></div>
-
-    <div id="spinner" class="spinner" style="display:none;">
-        <g:message code="spinner.alt" default="Loading&hellip;"/>
-    </div>
-
-    <asset:javascript src="/tristar/tristar.js" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </body>
 </html>
