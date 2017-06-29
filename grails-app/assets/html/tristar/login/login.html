@@ -1,0 +1,6 @@
+<form class="loginForm" name="loginForm" novalidate>
+    <input type="email" name="email" placeholder="email" ng-model="loginCtrl.email" required>
+    <input type="password" name="password" placeholder="password" ng-model="loginCtrl.password" required>
+    <button ng-disabled="loginForm.$invalid" ng-click="loginCtrl.login()">Submit</button>
+    <p ng-if="loginCtrl.authFailed">Auth Failed</p>
+</form>
