@@ -19,7 +19,7 @@ function LoginController(TristarApiService, $state) {
         TristarApiService.authenticate(ctrl.email, ctrl.password).then(function (value) {
             ctrl.authFailed = !value;
             if (value){
-                //TODO: change state
+                $state.go("loggedinwindow")
             }
         })
     }

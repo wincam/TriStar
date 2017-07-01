@@ -17,10 +17,20 @@ function routeConfig ($stateProvider) {
             controllerAs: "loginCtrl",
             templateUrl: "/assets/tristar/login/login.html"
         })
+        .state("loggedinwindow",{
+            controller: "LoggedInWindowController",
+            controllerAs: "loggedInWindowCtrl",
+            templateUrl: "/assets/tristar/window/loggedinwindow.html",
+            resolve: {
+                currentUser: ["TristarApiService", function (TristarApiService) {
+                    return TristarApiService.getCurrentUser();
+                }]
+            }
+        })
 }
 
 routerConfig.$inject = ["$urlRouterProvider"];
 function routerConfig($urlRouterProvider) {
-    $urlRouterProvider.otherwise('/login');
+    $urlRouterProvider.otherwise("/login");
 
 }
