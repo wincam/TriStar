@@ -44,4 +44,26 @@ function TristarContentDownloaderService ($http, ApiPath) {
                return null;
         })
     };
+
+    // download list of users
+    service.loadUserList = function (token, pageId){
+        var config = {
+            method: "GET",
+            url: ApiPath + "users",
+            params: {id : pageId},
+            headers: {
+                "Authorization": "Bearer " + token
+            }
+        };
+
+        return $http(config).then(
+            function success (response) {
+                return response.data;
+            }).catch(function failure () {
+                return null;
+        })
+
+
+
+    };
 }

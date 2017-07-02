@@ -18,12 +18,21 @@ function routeConfig ($stateProvider) {
             templateUrl: "/assets/tristar/login/login.html"
         })
         .state("loggedinwindow",{
+            params: {
+                userPageId : {
+                    type: "int",
+                    value: 0,
+                    squash: true
+            }},
             controller: "LoggedInWindowController",
             controllerAs: "loggedInWindowCtrl",
             templateUrl: "/assets/tristar/window/loggedinwindow.html",
             resolve: {
                 currentUser: ["TristarApiService", function (TristarApiService) {
                     return TristarApiService.getCurrentUser();
+                }],
+                userList:["TristarApiService", "$stateParams", function (TristarApiService , $stateParams) {
+                    return TristarApiService.getUserList($stateParams.userPageId);
                 }]
             }
         })

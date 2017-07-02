@@ -13,6 +13,9 @@ function TristarApiService ($q, TristarContentDownloaderService) {
     // model of current user
     service.currentUser = undefined;
 
+    // model of list of users
+    service.userList = {};
+
     // model of teams
     service.teams = {};
 
@@ -45,10 +48,32 @@ function TristarApiService ($q, TristarContentDownloaderService) {
             // check web service
             return TristarContentDownloaderService.loadCurrentUser(service.accessToken).then(function (user) {
                 service.currentUser = user;
-                console.log(user);
+                console.debug("loaded " + user);
                 return user;
             });
-        })
+        });
+    };
+
+    service.getUserList = function (pageId) {
+        var defer = $q.defer();
+
+        // check local storage
+        if (pageId.toString() in service.userList){
+            defer.resolve(service.userList[pageId]);
+        } else {
+            defer.reject();
+        }
+
+        return defer.promise.then(function success (list) {
+            return list;
+        },function failure () {
+            // check web service
+            return TristarContentDownloaderService.loadUserList(service.accessToken, pageId).then(function (list) {
+                service.userList[pageId] = list;
+                console.debug("loaded user list " + pageId);
+                return list;
+            });
+        });
     };
 
     //TODO: make group getter

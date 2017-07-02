@@ -1,3 +1,23 @@
-<div>
-    {{loggedInWindowCtrl.currentUser["username"];}}
+<div class="row">
+    <div class="col-lg-3">
+        <h3>Teams</h3>
+        <ul>
+            <li ng-repeat="team in loggedInWindowCtrl.teams">
+                {{team}}
+            </li>
+        </ul>
+        <h3> Users </h3>
+        <ul>
+            <li ng-repeat="user in loggedInWindowCtrl.userList">
+                {{user}}
+            </li>
+        </ul>
+
+        <a ng-if="loggedInWindowCtrl.userPage < 0" ui-sref="loggedinwindow{pageId: loggedInWindowCtrl.userPage - 1}">Previous page</a>
+        <a ng-if="loggedInWindowCtrl.userList.length == 20" ui-sref="loggedinwindow{pageId: loggedInWindowCtrl.userPage + 1}">Next page</a>
+
+    </div>
+    <div class="col-lg-9">
+        <ui-view></ui-view>
+    </div>
 </div>
