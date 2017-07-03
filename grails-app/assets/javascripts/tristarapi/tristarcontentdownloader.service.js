@@ -42,8 +42,8 @@ function TristarContentDownloaderService ($http, ApiPath) {
 
     /**
      * Requests the model of a logged in user
-     * @param token Token of user
-     * @return user from response
+     * @param {String} token Token of user
+     * @return {Promise} Response from server or null
      */
     service.loadCurrentUser = function (token) {
         var config = {
@@ -53,19 +53,14 @@ function TristarContentDownloaderService ($http, ApiPath) {
                 "Authorization": "Bearer " + token
             }
         };
-        return $http(config).then(
-            function success (response) {
-                return response.data;
-            }).catch(function failure () {
-               return null;
-        })
+        return service.sendRequest(config);
     };
 
     /**
      * Requests a page of users
-     * @param token     Token of the user
-     * @param pageId    Id of page to request
-     * @return Response from server or null
+     * @param {String} token     Token of the user
+     * @param {Number} pageId    Id of page to request
+     * @return {Promise} Response from server or null
      */
     service.loadUserList = function (token, pageId){
         var config = {
@@ -77,14 +72,78 @@ function TristarContentDownloaderService ($http, ApiPath) {
             }
         };
 
+        return service.sendRequest(config);
+
+
+
+    };
+
+    /**
+     * Requests a user
+     * @param {String} token     Token of user
+     * @param {String} username  Username of user
+     * @return {Promise} Response from server or null
+     */
+    service.loadUser = function (token, username) {
+        var config = {
+            method: "GET",
+            url: ApiPath + "user\\" + username,
+            headers: {
+                "Authorization": "Bearer " + token
+            }
+        };
+
+        return service.sendRequest(config);
+    };
+
+    /**
+     * Requests a team
+     * @param {String} token    Token of user
+     * @param {String} teamId   Team Id of team
+     * @return {Promise} Response from server or null
+     */
+    service.loadTeam = function (token, teamId) {
+        var config = {
+            method: "GET",
+            url: ApiPath + "team\\" + teamId,
+            headers: {
+                "Authorization": "Bearer " + token
+            }
+        };
+
+        return service.sendRequest(config);
+    };
+
+    /**
+     * Requests a task
+     * @param {String} token    Token of user
+     * @param {String} taskId   Task of team
+     * @return {Promise} Response from server or null
+     */
+    service.loadTask = function (token, taskId) {
+        var config = {
+            method: "GET",
+            url: ApiPath + "task\\" + taskId,
+            headers: {
+                "Authorization": "Bearer " + token
+            }
+        };
+
+        return service.sendRequest(config);
+    };
+
+    /**
+     * Sends request to API
+     * @private
+     * @param config    $http config
+     * @return {Promise} Response from server or null
+     */
+    service.sendRequest = function (config) {
         return $http(config).then(
             function success (response) {
                 return response.data;
             }).catch(function failure () {
-                return null;
-        })
-
-
-
+            return null;
+        });
     };
 }

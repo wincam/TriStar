@@ -40,6 +40,13 @@ function routeConfig ($stateProvider, $urlRouterProvider) {
                     return TristarApiService.getUserList($stateParams.userPageId);
                 }]
             }
+        })
+        .state("loggedinwindow.home",{
+            url: "/home",
+            controller: "HomeController",
+            controllerAs: "homeCtrl",
+            templateUrl: "/assets/tristar/home/home.html"
+
         });
 
     $urlRouterProvider.otherwise("/login");
