@@ -20,7 +20,6 @@ function LoggedInWindowController(currentUser, userList, $stateParams, $state) {
 
     // goes to previous user page
     ctrl.userListPreviousPage = function () {
-        console.log("Previous page");
         $state.go($state.current,{userPageId : (ctrl.userPage - 1)});
     };
 }

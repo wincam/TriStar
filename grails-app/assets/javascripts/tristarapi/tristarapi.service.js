@@ -47,13 +47,16 @@ function TristarApiService ($q, TristarContentDownloaderService) {
         },function failure () {
             // check web service
             return TristarContentDownloaderService.loadCurrentUser(service.accessToken).then(function (user) {
-                service.currentUser = user;
-                console.debug("loaded " + user);
+                if (user !== null) {
+                    service.currentUser = user;
+                    console.debug("loaded " + user);
+                }
                 return user;
             });
         });
     };
 
+    // get list of users
     service.getUserList = function (pageId) {
         var defer = $q.defer();
 
@@ -69,8 +72,11 @@ function TristarApiService ($q, TristarContentDownloaderService) {
         },function failure () {
             // check web service
             return TristarContentDownloaderService.loadUserList(service.accessToken, pageId).then(function (list) {
-                service.userList[pageId] = list;
-                console.debug("loaded user list " + pageId);
+                if (list !== null){
+                    service.userList[pageId] = list;
+                    console.debug("loaded user list " + pageId);
+                }
+
                 return list;
             });
         });
