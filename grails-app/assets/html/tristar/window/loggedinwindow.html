@@ -13,8 +13,8 @@
             </li>
         </ul>
 
-        <a ng-if="loggedInWindowCtrl.userPage < 0" ui-sref="loggedinwindow{pageId: loggedInWindowCtrl.userPage - 1}">Previous page</a>
-        <a ng-if="loggedInWindowCtrl.userList.length == 20" ui-sref="loggedinwindow{pageId: loggedInWindowCtrl.userPage + 1}">Next page</a>
+        <button  ng-disabled="loggedInWindowCtrl.userPage <= 0" ng-click="loggedInWindowCtrl.userListPreviousPage()">Previous page</button>
+        <button ng-disabled="loggedInWindowCtrl.userList.length != 20" ng-click="loggedInWindowCtrl.userListNextPage()">Next page</button>
 
     </div>
     <div class="col-lg-9">
