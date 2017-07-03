@@ -5,7 +5,14 @@
 
 angular.module("tristarapi").service("TristarApiService",TristarApiService);
 
+
 TristarApiService.$inject = ["$q", "TristarContentDownloaderService"];
+/**
+ * Service for requesting, sending and caching Tristar REST API
+ * @memberOf tristarapi
+ * @param $q                                Angular $q service
+ * @param TristarContentDownloaderService   Service for getting data from the Tristar REST API
+ */
 function TristarApiService ($q, TristarContentDownloaderService) {
     var service = this;
     service.accessToken = undefined;
@@ -19,7 +26,12 @@ function TristarApiService ($q, TristarContentDownloaderService) {
     // model of teams
     service.teams = {};
 
-    // set api token
+    /**
+     * Authenticates emails and password and stores a token
+     * @param {String} email    The email of the user
+     * @param {String} password The password of the user
+     * @return {Boolean} if authentication was successful
+     */
     service.authenticate = function (email, password) {
         return TristarContentDownloaderService.authenticate(email, password).then(
             function success(token) {
@@ -31,7 +43,10 @@ function TristarApiService ($q, TristarContentDownloaderService) {
         });
     };
 
-    // gets current user
+    /**
+     * Downloads the model of the current logged in user
+     * @return A model of the user or null
+     */
     service.getCurrentUser = function (){
         var defer = $q.defer();
 
@@ -56,7 +71,11 @@ function TristarApiService ($q, TristarContentDownloaderService) {
         });
     };
 
-    // get list of users
+    /**
+     * Downloads a page of the list of users
+     * @param {Number} pageId   The page to be downloaded
+     * @return {List} A list of user names or an empty list
+     */
     service.getUserList = function (pageId) {
         var defer = $q.defer();
 
@@ -74,10 +93,11 @@ function TristarApiService ($q, TristarContentDownloaderService) {
             return TristarContentDownloaderService.loadUserList(service.accessToken, pageId).then(function (list) {
                 if (list !== null){
                     service.userList[pageId] = list;
-                    console.debug("loaded user list " + pageId);
+                    console.debug("loaded user list page " + pageId);
+                    return list;
                 }
+                return [];
 
-                return list;
             });
         });
     };

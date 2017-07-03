@@ -6,10 +6,22 @@
 
 angular.module("tristarapi").service("TristarContentDownloaderService",TristarContentDownloaderService);
 
+TristarContentDownloaderService.$inject = ["$http", "ApiPath"];
+/**
+ * Service that processes all downloads from the Tristar REST API
+ * @memberOf tristarapi
+ * @param $http     Angular $http service
+ * @param ApiPath   The hostname and path to the Tristar API
+ */
 function TristarContentDownloaderService ($http, ApiPath) {
     var service = this;
 
-    // set api token
+    /**
+     * Requests token from rest api
+     * @param {String} email    The email of the user
+     * @param {String} password The password of the user
+     * @return {String} Token from response
+     */
     service.authenticate = function (email, password) {
         var config = {
             method: "POST",
@@ -28,7 +40,11 @@ function TristarContentDownloaderService ($http, ApiPath) {
         });
     };
 
-    // download user
+    /**
+     * Requests the model of a logged in user
+     * @param token Token of user
+     * @return user from response
+     */
     service.loadCurrentUser = function (token) {
         var config = {
             method: "GET",
@@ -45,7 +61,12 @@ function TristarContentDownloaderService ($http, ApiPath) {
         })
     };
 
-    // download list of users
+    /**
+     * Requests a page of users
+     * @param token     Token of the user
+     * @param pageId    Id of page to request
+     * @return Response from server or null
+     */
     service.loadUserList = function (token, pageId){
         var config = {
             method: "GET",

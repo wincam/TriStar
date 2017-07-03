@@ -1,6 +1,7 @@
 /**
  * @author Cameron Nicolle
  * @since 28/06/17
+ * @class tristarapi
  */
 
 angular.module('tristarapi', [])

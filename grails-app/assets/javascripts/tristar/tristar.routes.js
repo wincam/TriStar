@@ -4,11 +4,16 @@
 */
 
 angular.module("tristar")
-    .config(routeConfig)
-    .config(routerConfig);
+    .config(routeConfig);
 
-routeConfig.$inject = ['$stateProvider'];
-function routeConfig ($stateProvider) {
+routeConfig.$inject = ["$stateProvider", "$urlRouterProvider"];
+/**
+ * Config of ui-router
+ * @memberOf tristar
+ * @param $stateProvider        Ui-router $stateprovider
+ * @param $urlRouterProvider    Ui-router $urlRouterProvider
+ */
+function routeConfig ($stateProvider, $urlRouterProvider) {
     // routes
     $stateProvider
         .state("login",{
@@ -35,11 +40,7 @@ function routeConfig ($stateProvider) {
                     return TristarApiService.getUserList($stateParams.userPageId);
                 }]
             }
-        })
-}
+        });
 
-routerConfig.$inject = ["$urlRouterProvider"];
-function routerConfig($urlRouterProvider) {
     $urlRouterProvider.otherwise("/login");
-
 }
