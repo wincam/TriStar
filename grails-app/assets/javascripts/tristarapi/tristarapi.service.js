@@ -20,11 +20,17 @@ function TristarApiService ($q, TristarContentDownloaderService) {
     // model of current user
     service.currentUser = undefined;
 
-    // model of list of users
+    // collection of user list pages
     service.userList = {};
 
     // model of teams
     service.teams = {};
+
+    // model of tasks
+    service.tasks = {};
+
+    // model of users
+    service.users = {};
 
     /**
      * Authenticates emails and password and stores a token
@@ -41,6 +47,45 @@ function TristarApiService ($q, TristarContentDownloaderService) {
             console.error("Cannot get token");
             return false;
         });
+    };
+
+
+    /**
+     * Creates a getter function that caches the result for faster response in the future
+     * @private
+     * @param {Object} saveLocation Location to save data
+     * @param {Function} downloader Function to download data
+     * @param {String} type         Type of data
+     * @return {Function}
+     */
+    service.cachingGetterFactory = function (saveLocation, downloader, type) {
+        return function (id) {
+            var defer = $q.defer();
+
+            // check local storage
+            if (id in saveLocation){
+                defer.resolve(saveLocation[id]);
+            } else {
+                defer.reject();
+            }
+
+            return defer.promise.then(function success (object) {
+                return object;
+            },function failure () {
+                // check web service
+                return downloader(service.accessToken, id).then(function (object) {
+                    // save value
+                    if (object !== null){
+                        saveLocation[id] = object;
+                        console.debug("loaded " + type + " " + id);
+                    }
+                    return object;
+
+                });
+            });
+        };
+
+
     };
 
     /**
@@ -73,36 +118,34 @@ function TristarApiService ($q, TristarContentDownloaderService) {
 
     /**
      * Downloads a page of the list of users
-     * @param {Number} pageId   The page to be downloaded
-     * @return {List} A list of user names or an empty list
+     * @param {Number} id   The page to be downloaded
+     * @return {List} A list of user names or null
+     * @type {Function}
      */
-    service.getUserList = function (pageId) {
-        var defer = $q.defer();
+    service.getUserList = service.cachingGetterFactory(service.userList, TristarContentDownloaderService.loadUserList, "User list Page");
 
-        // check local storage
-        if (pageId.toString() in service.userList){
-            defer.resolve(service.userList[pageId]);
-        } else {
-            defer.reject();
-        }
+    /**
+     * Downloads a team
+     * @param {String} id Name of team to download
+     * @return A model of the team or null
+     * @type {Function}
+     */
+    service.getTeam = service.cachingGetterFactory(service.teams, TristarContentDownloaderService.loadTeam, "team");
 
-        return defer.promise.then(function success (list) {
-            return list;
-        },function failure () {
-            // check web service
-            return TristarContentDownloaderService.loadUserList(service.accessToken, pageId).then(function (list) {
-                if (list !== null){
-                    service.userList[pageId] = list;
-                    console.debug("loaded user list page " + pageId);
-                    return list;
-                }
-                return [];
+    /**
+     * Gets a task
+     * @param {String} id Id of task to download
+     * @return A model of the task or null
+     * @type {Function}
+     */
+    service.getTask = service.cachingGetterFactory(service.tasks, TristarContentDownloaderService.loadTask, "task");
 
-            });
-        });
-    };
-
-    //TODO: make group getter
-
+    /**
+     * Gets a user
+     * @param {String} id Id of user to download
+     * @return A model of the user or null
+     * @type {Function}
+     */
+    service.getUser = service.cachingGetterFactory(service.users, TristarContentDownloaderService.loadUser, "user");
 
 }
