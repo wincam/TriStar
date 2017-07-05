@@ -38,8 +38,8 @@ class BootStrap {
             returnSet.dateCreated = it.dateCreated
             returnSet.open = it.open
             returnSet.assigner = it.assigner.getUsername()
-            returnSet.members = it.team.getName()
-            returnSet.assignee = it.assignees.collect {it.getUsername()}
+            returnSet.team = it.team.getName()
+            returnSet.assignees = it.assignees.collect {it.getUsername()}
             return returnSet
         }
 
