@@ -88,6 +88,17 @@ function routeConfig ($stateProvider, $urlRouterProvider) {
                     return TristarApiService.getUser($stateParams.username);
                 }]
             }
+        })
+        .state("loggedinwindow.task",{
+            url: "/task/{taskId:string}",
+            controller: "TaskController",
+            controllerAs: "taskCtrl",
+            templateUrl: "/assets/tristar/task/task.html",
+            resolve: {
+                task: ["TristarApiService", "$stateParams", function (TristarApiService, $stateParams) {
+                    return TristarApiService.getTask($stateParams.taskId);
+                }]
+            }
         });
 
     $urlRouterProvider.otherwise("/login");

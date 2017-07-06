@@ -30,10 +30,13 @@
     <script type="text/javascript" src="/assets/tristar/taskview/taskview.controller.js?compile=true"></script>
     <script type="text/javascript" src="/assets/tristar/userlink/userlink.controller.js?compile=true"></script>
     <script type="text/javascript" src="/assets/tristar/user/user.controller.js?compile=true"></script>
+    <script type="text/javascript" src="/assets/tristar/task/task.controller.js?compile=true"></script>
+    <script type="text/javascript" src="/assets/tristar/tasklink/tasklink.controller.js?compile=true"></script>
 
     <!-- Components -->
     <script type="text/javascript" src="/assets/tristar/taskview/taskview.component.js?compile=true"></script>
     <script type="text/javascript" src="/assets/tristar/userlink/userlink.component.js?compile=true"></script>
+    <script type="text/javascript" src="/assets/tristar/tasklink/tasklink.component.js?compile=true"></script>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 

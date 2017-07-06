@@ -14,8 +14,4 @@ UserLinkController.$inject = ["$state"];
  */
 function UserLinkController ($state) {
     var ctrl = this;
-
-    ctrl.goToUserPage = function () {
-        $state.go("user", {username: ctrl.username});
-    };
 }
