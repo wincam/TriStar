@@ -5,4 +5,4 @@
  */
 //= wrapped
 
-angular.module("tristar", ["ui.router","tristarapi"]);
+angular.module("tristar", ["ui.router", "ui.bootstrap", "tristarapi"]);

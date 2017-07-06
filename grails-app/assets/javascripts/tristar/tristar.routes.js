@@ -45,7 +45,35 @@ function routeConfig ($stateProvider, $urlRouterProvider) {
             url: "/home",
             controller: "HomeController",
             controllerAs: "homeCtrl",
-            templateUrl: "/assets/tristar/home/home.html"
+            templateUrl: "/assets/tristar/home/home.html",
+            resolve: {
+                assignedTasks: ["$q", "TristarApiService", "currentUser", function ($q ,TristarApiSerivce, CurrentUser) {
+                    // get all tasks
+                    var tasks = [];
+                    for (var task in CurrentUser["assignedTasks"]){
+                        if (CurrentUser["assignedTasks"].hasOwnProperty(task)){
+                            tasks.push(TristarApiSerivce.getTask(CurrentUser["assignedTasks"][task]));
+                        }
+
+                    }
+
+                    // evaluate list of tasks
+                    return $q.all(tasks);
+                }],
+                createdTasks: ["$q", "TristarApiService", "currentUser", function ($q ,TristarApiSerivce, CurrentUser) {
+                    // get all tasks
+                    var tasks = [];
+                    for (var task in CurrentUser["createdTasks"]){
+                        if (CurrentUser["createdTasks"].hasOwnProperty(task)){
+                            tasks.push(TristarApiSerivce.getTask(CurrentUser["createdTasks"][task]));
+                        }
+
+                    }
+
+                    // evaluate list of tasks
+                    return $q.all(tasks);
+                }]
+            }
 
         });
 

@@ -1,0 +1,9 @@
+/* bootstrap required css */
+.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+
+/* taskview */
+.task-view {
+    border: 1pt solid black;
+    margin: 10pt;
+    background-color: lightgray;
+}

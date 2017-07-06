@@ -36,4 +36,3 @@ function LoggedInWindowController(currentUser, userList, $stateParams, $state) {
         $state.go($state.current,{userPageId : (ctrl.userPage - 1)});
     };
 }
-
