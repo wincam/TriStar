@@ -20,9 +20,11 @@
     <!-- Services -->
     <script type="text/javascript" src="/assets/tristarapi/tristarapi.service.js?compile=true"></script>
     <script type="text/javascript" src="/assets/tristarapi/tristarcontentdownloader.service.js?compile=true"></script>
+    <script type="text/javascript" src="/assets/tristarapi/tristarcontentuploader.service.js?compile=true"></script>
 
     <!-- Controllers -->
     <script type="text/javascript" src="/assets/tristar/login/login.controller.js?compile=true"></script>
+    <script type="text/javascript" src="/assets/tristar/signup/signup.controller.js?compile=true"></script>
     <script type="text/javascript" src="/assets/tristar/loggedinwindow/loggedinwindow.controller.js?compile=true"></script>
     <script type="text/javascript" src="/assets/tristar/home/home.controller.js?compile=true"></script>
     <script type="text/javascript" src="/assets/tristar/taskview/taskview.controller.js?compile=true"></script>

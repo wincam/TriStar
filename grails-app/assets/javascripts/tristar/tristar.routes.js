@@ -22,6 +22,12 @@ function routeConfig ($stateProvider, $urlRouterProvider) {
             controllerAs: "loginCtrl",
             templateUrl: "/assets/tristar/login/login.html"
         })
+        .state("signup",{
+            url: "/signup",
+            controller: "SignUpController",
+            controllerAs: "signUpCtrl",
+            templateUrl: "/assets/tristar/signup/signup.html"
+        })
         .state("loggedinwindow",{
             params: {
                 userPageId : {

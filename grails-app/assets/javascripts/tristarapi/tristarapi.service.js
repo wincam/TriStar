@@ -6,14 +6,15 @@
 angular.module("tristarapi").service("TristarApiService",TristarApiService);
 
 
-TristarApiService.$inject = ["$q", "TristarContentDownloaderService"];
+TristarApiService.$inject = ["$q", "TristarContentDownloaderService", "TristarContentUploaderService"];
 /**
  * Service for requesting, sending and caching Tristar REST API
  * @memberOf tristarapi
  * @param $q                                Angular $q service
  * @param TristarContentDownloaderService   Service for getting data from the Tristar REST API
+ * @param TristarContentUploaderService     Service for sending data to the Tristar REST API
  */
-function TristarApiService ($q, TristarContentDownloaderService) {
+function TristarApiService ($q, TristarContentDownloaderService, TristarContentUploaderService) {
     var service = this;
     service.accessToken = undefined;
 
@@ -36,7 +37,7 @@ function TristarApiService ($q, TristarContentDownloaderService) {
      * Authenticates emails and password and stores a token
      * @param {String} email    The email of the user
      * @param {String} password The password of the user
-     * @return {Boolean} if authentication was successful
+     * @return {Promise} if authentication was successful
      */
     service.authenticate = function (email, password) {
         return TristarContentDownloaderService.authenticate(email, password).then(
@@ -147,5 +148,24 @@ function TristarApiService ($q, TristarContentDownloaderService) {
      * @type {Function}
      */
     service.getUser = service.cachingGetterFactory(service.users, TristarContentDownloaderService.loadUser, "user");
+
+    /**
+     * Creates a user
+     * @param {String} username Username of the user
+     * @param {String} email    Email of the user
+     * @param {String} name     Name of the user
+     * @param {String} password Password of the user
+     * @return {Promise}
+     */
+    service.createUser = function (username, email, name, password) {
+        return TristarContentUploaderService.createUser(username, email, name, password).then(function success () {
+            // user created
+            return true;
+        }, function failure () {
+            // user not created
+            return false;
+        });
+    }
+
 
 }
