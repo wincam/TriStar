@@ -21,16 +21,14 @@
             </ul>
 
             <!-- User list nav buttons -->
-            <nav aria-label="...">
-                <ul class="pager">
-                    <li class="previous">
-                        <button class="btn btn-default" ng-disabled="loggedInWindowCtrl.userPage <= 0" ng-click="loggedInWindowCtrl.userListPreviousPage()">&larr; Previous</button>
-                    </li>
-                    <li class="next">
-                        <button class="btn btn-default" ng-disabled="loggedInWindowCtrl.userList.length != 20" ng-click="loggedInWindowCtrl.userListNextPage()">Next &rarr;</button>
-                    </li>
-                </ul>
-            </nav>
+            <div class="panel-footer user-list-nav">
+                <div class="btn-group" role="group" aria-label="...">
+                    <button class="btn btn-default" ng-disabled="loggedInWindowCtrl.userPage <= 0" ng-click="loggedInWindowCtrl.userListPreviousPage()">&larr; Previous</button>
+                    <button class="btn btn-default" ng-disabled="loggedInWindowCtrl.userList.length != 20" ng-click="loggedInWindowCtrl.userListNextPage()">Next &rarr;</button>
+                </div>
+            </div>
+
+
         </div>
 
 

@@ -7,6 +7,11 @@
     padding: 15pt;
 }
 
+/* home */
+.user-list-nav {
+    text-align:center;
+}
+
 /* taskview */
 .task-view {
     margin: 10pt;
