@@ -9,7 +9,7 @@ angular.module("tristar").component("taskView", {
     bindings: {
         task: "<"
     },
-    controller: "taskViewController",
+    controller: "TaskViewController",
     controllerAs: "taskViewCtrl"
 });
 

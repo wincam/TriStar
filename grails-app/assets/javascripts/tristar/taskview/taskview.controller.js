@@ -4,13 +4,13 @@
  */
 
 angular.module('tristar')
-    .controller('taskViewController', taskViewController);
+    .controller('TaskViewController', TaskViewController);
 
-taskViewController.$inject = [];
+TaskViewController.$inject = [];
 /**
  * Controller for task view component
  * @memberOf tristar
  */
-function taskViewController () {
+function TaskViewController () {
 
 }
