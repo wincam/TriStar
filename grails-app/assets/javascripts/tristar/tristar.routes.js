@@ -60,9 +60,7 @@ function routeConfig ($stateProvider, $urlRouterProvider) {
                         if (CurrentUser["assignedTasks"].hasOwnProperty(task)){
                             tasks.push(TristarApiSerivce.getTask(CurrentUser["assignedTasks"][task]));
                         }
-
                     }
-
                     // evaluate list of tasks
                     return $q.all(tasks);
                 }],
@@ -73,14 +71,23 @@ function routeConfig ($stateProvider, $urlRouterProvider) {
                         if (CurrentUser["createdTasks"].hasOwnProperty(task)){
                             tasks.push(TristarApiSerivce.getTask(CurrentUser["createdTasks"][task]));
                         }
-
                     }
-
                     // evaluate list of tasks
                     return $q.all(tasks);
                 }]
             }
 
+        })
+        .state("loggedinwindow.user",{
+            url: "/user/{username:string}",
+            controller: "UserController",
+            controllerAs: "userCtrl",
+            templateUrl: "/assets/tristar/user/user.html",
+            resolve: {
+                user: ["TristarApiService", "$stateParams", function (TristarApiService, $stateParams) {
+                    return TristarApiService.getUser($stateParams.username);
+                }]
+            }
         });
 
     $urlRouterProvider.otherwise("/login");

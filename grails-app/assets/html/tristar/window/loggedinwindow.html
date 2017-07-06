@@ -17,7 +17,9 @@
                 <h3 class="panel-title">Users</h3>
             </div>
             <ul class="list-group">
-                <li class="list-group-item" ng-repeat="user in loggedInWindowCtrl.userList">{{user}}</li>
+                <li class="list-group-item" ng-repeat="user in loggedInWindowCtrl.userList">
+                    <user-link username="user"></user-link>
+                </li>
             </ul>
 
             <!-- User list nav buttons -->
