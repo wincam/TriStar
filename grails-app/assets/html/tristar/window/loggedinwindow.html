@@ -1,5 +1,41 @@
 <div class="row">
     <div class="col-lg-3">
+
+        <!-- Team list -->
+        <div class="panel panel-default team-name-list-panel">
+            <div class="panel-heading">
+                <h3 class="panel-title">Teams</h3>
+            </div>
+            <ul class="list-group">
+                <li class="list-group-item" ng-repeat="team in loggedInWindowCtrl.teams">{{team}}</li>
+            </ul>
+        </div>
+
+        <!-- User list -->
+        <div class="panel panel-default username-list-panel">
+            <div class="panel-heading">
+                <h3 class="panel-title">Users</h3>
+            </div>
+            <ul class="list-group">
+                <li class="list-group-item" ng-repeat="user in loggedInWindowCtrl.userList">{{user}}</li>
+            </ul>
+
+            <!-- User list nav buttons -->
+            <nav aria-label="...">
+                <ul class="pager">
+                    <li class="previous">
+                        <button class="btn btn-default" ng-disabled="loggedInWindowCtrl.userPage <= 0" ng-click="loggedInWindowCtrl.userListPreviousPage()">&larr; Previous</button>
+                    </li>
+                    <li class="next">
+                        <button class="btn btn-default" ng-disabled="loggedInWindowCtrl.userList.length != 20" ng-click="loggedInWindowCtrl.userListNextPage()">Next &rarr;</button>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+
+
+        <!--
         <h3>Teams</h3>
         <ul>
             <li ng-repeat="team in loggedInWindowCtrl.teams">
@@ -15,7 +51,7 @@
 
         <button  ng-disabled="loggedInWindowCtrl.userPage <= 0" ng-click="loggedInWindowCtrl.userListPreviousPage()">Previous page</button>
         <button ng-disabled="loggedInWindowCtrl.userList.length != 20" ng-click="loggedInWindowCtrl.userListNextPage()">Next page</button>
-
+        -->
     </div>
     <div class="col-lg-9">
         <ui-view></ui-view>

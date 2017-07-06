@@ -1,20 +1,23 @@
-<div class="row task-view">
-    <div class="col-lg-12">
-        <h1>{{taskViewCtrl.task["name"]}}</h1>
+<div class="panel panel-default task-view">
+    <div class="panel-heading">
+        <h1 class="panel-title">{{taskViewCtrl.task["name"]}}</h1>
     </div>
-    <div class="col-lg-6">
-        <p>{{taskViewCtrl.task["description"]}}</p>
+    <div class="panel-body row">
+        <div class="col-lg-9">
+            <p>{{taskViewCtrl.task["description"]}}</p>
+        </div>
+        <div class="col-lg-3">
+            <h3>Assigned: {{taskViewCtrl.task["dateCreated"]}}</h3>
+            <h3>Due: {{taskViewCtrl.task["dueDate"]}}</h3>
+        </div>
+        <div class="col-lg-6">
+            <h3>Assigner</h3>
+            <h4>{{taskViewCtrl.task["assigner"]}}</h4>
+        </div>
+        <div class="col-lg-6">
+            <h3>Assignees</h3>
+            <h4 ng-repeat="user in taskViewCtrl.task['assignees']">{{user}}</h4>
+        </div>
     </div>
-    <div class="col-lg-6">
-        <h3>Assigned: {{taskViewCtrl.task["dateCreated"]}}</h3>
-        <h3>Due: {{taskViewCtrl.task["dueDate"]}}</h3>
-    </div>
-    <div class="col-lg-6">
-        <h3>Assigner</h3>
-        <h4>{{taskViewCtrl.task["assigner"]}}</h4>
-    </div>
-    <div class="col-lg-6">
-        <h3>Assignees</h3>
-        <h4 ng-repeat="user in taskViewCtrl.task['assignees']">{{user}}</h4>
-    </div>
+
 </div>

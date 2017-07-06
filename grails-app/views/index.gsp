@@ -36,7 +36,7 @@
 
 </head>
 
-<body ng-app="tristar">
+<body ng-app="tristar" ng-strict-di="true">
 
     <ui-view></ui-view>
 </body>
