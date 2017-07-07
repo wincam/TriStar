@@ -1,9 +1,9 @@
 <uib-tabset active="active">
     <uib-tab index="0" heading="Assigned Tasks">
-        <task-view ng-repeat="task in homeCtrl.assignedTasks" task="task"></task-view>
+        <task-list tasks="homeCtrl.assignedTasks"></task-list>
     </uib-tab>
     <uib-tab index="1" heading="Created Tasks" disable="tab.disabled">
-        <task-view ng-repeat="task in homeCtrl.createdTasks" task="task"></task-view>
+        <task-list tasks="homeCtrl.createdTasks"></task-list>
     </uib-tab>
 </uib-tabset>
 
