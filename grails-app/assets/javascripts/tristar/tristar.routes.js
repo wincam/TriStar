@@ -49,6 +49,12 @@ function routeConfig ($stateProvider, $urlRouterProvider) {
         })
         .state("loggedinwindow.home",{
             url: "/home",
+            params: {
+                taskTabId: {
+                    type: "int",
+                    value: 0
+                }
+            },
             controller: "HomeController",
             controllerAs: "homeCtrl",
             templateUrl: "/assets/tristar/home/home.html",
