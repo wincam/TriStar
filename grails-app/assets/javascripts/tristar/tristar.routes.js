@@ -105,6 +105,27 @@ function routeConfig ($stateProvider, $urlRouterProvider) {
                     return TristarApiService.getTask($stateParams.taskId);
                 }]
             }
+        })
+        .state("loggedinwindow.team",{
+            url: "/team/{teamName:string}",
+            controller: "TeamController",
+            controllerAs: "teamCtrl",
+            templateUrl: "/assets/tristar/team/team.html",
+            resolve: {
+                team: ["TristarApiService", "$stateParams", function (TristarApiService, $stateParams) {
+                    return TristarApiService.getTeam($stateParams.teamName);
+                }],
+                tasks: ["$q", "TristarApiService", "team", function ($q, TristarApiService, team) {
+                    var tasks = [];
+                    for (var task in team["tasks"]) {
+                        if (team["tasks"].hasOwnProperty(task)) {
+                            tasks.push(TristarApiService.getTask(team["tasks"][task]));
+                        }
+                    }
+                    // evaluate list of tasks
+                    return $q.all(tasks);
+                }]
+            }
         });
 
     $urlRouterProvider.otherwise("/login");

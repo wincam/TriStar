@@ -29,5 +29,5 @@ function HomeController(currentUser, assignedTasks,createdTasks , $stateParams, 
      */
     ctrl.changeTab = function (newTabId) {
         $state.go($state.current, {taskTabId: newTabId});
-    }
+    };
 }

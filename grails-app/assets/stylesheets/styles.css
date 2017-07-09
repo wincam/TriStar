@@ -13,6 +13,6 @@
 }
 
 /* taskview */
-.task-view {
+.task-view, .team-info {
     margin: 10pt;
 }

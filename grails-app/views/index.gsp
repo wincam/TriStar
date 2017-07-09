@@ -33,12 +33,15 @@
     <script type="text/javascript" src="/assets/tristar/task/task.controller.js?compile=true"></script>
     <script type="text/javascript" src="/assets/tristar/tasklink/tasklink.controller.js?compile=true"></script>
     <script type="text/javascript" src="/assets/tristar/tasklist/tasklist.controller.js?compile=true"></script>
+    <script type="text/javascript" src="/assets/tristar/team/team.controller.js?compile=true"></script>
+    <script type="text/javascript" src="/assets/tristar/teamlink/teamlink.controller.js?compile=true"></script>
 
     <!-- Components -->
     <script type="text/javascript" src="/assets/tristar/taskview/taskview.component.js?compile=true"></script>
     <script type="text/javascript" src="/assets/tristar/userlink/userlink.component.js?compile=true"></script>
     <script type="text/javascript" src="/assets/tristar/tasklink/tasklink.component.js?compile=true"></script>
     <script type="text/javascript" src="/assets/tristar/tasklist/tasklist.component.js?compile=true"></script>
+    <script type="text/javascript" src="/assets/tristar/teamlink/teamlink.component.js?compile=true"></script>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 

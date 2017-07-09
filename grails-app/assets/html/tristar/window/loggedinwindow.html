@@ -7,7 +7,9 @@
                 <h3 class="panel-title">Teams</h3>
             </div>
             <ul class="list-group">
-                <li class="list-group-item" ng-repeat="team in loggedInWindowCtrl.teams">{{team}}</li>
+                <li class="list-group-item" ng-repeat="team in loggedInWindowCtrl.teams">
+                    <team-link teamname="team"></team-link>
+                </li>
             </ul>
         </div>
 
