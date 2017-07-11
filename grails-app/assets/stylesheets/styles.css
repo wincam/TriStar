@@ -8,11 +8,15 @@
 }
 
 /* home */
-.user-list-nav {
+.user-list-nav, .create-new-task-nav {
     text-align:center;
 }
 
 /* taskview */
-.task-view, .team-info {
+.task-view, .team-info, .create-team-form {
     margin: 10pt;
+}
+
+.create-team-form {
+    padding: 15pt;
 }

@@ -126,6 +126,12 @@ function routeConfig ($stateProvider, $urlRouterProvider) {
                     return $q.all(tasks);
                 }]
             }
+        })
+        .state("loggedinwindow.createteam",{
+            url: "/createteam",
+            controller: "CreateTeamController",
+            controllerAs: "createTeamCtrl",
+            templateUrl: "/assets/tristar/createteam/createteam.html"
         });
 
     $urlRouterProvider.otherwise("/login");

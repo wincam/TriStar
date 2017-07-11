@@ -165,7 +165,24 @@ function TristarApiService ($q, TristarContentDownloaderService, TristarContentU
             // user not created
             return false;
         });
-    }
+    };
+
+    /**
+     * Creates a team
+     * @param {String} name         Name of the team
+     * @param {String} description  Description of team
+     */
+    service.createTeam = function (name, description) {
+        return TristarContentUploaderService.createTeam(service.accessToken, name, description).then(function success () {
+            // team created
+            // clear user
+            service.currentUser = undefined;
+            return true;
+        }, function failure () {
+            // team not created
+            return false;
+        });
+    };
 
 
 }

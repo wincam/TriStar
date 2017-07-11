@@ -35,6 +35,7 @@
     <script type="text/javascript" src="/assets/tristar/tasklist/tasklist.controller.js?compile=true"></script>
     <script type="text/javascript" src="/assets/tristar/team/team.controller.js?compile=true"></script>
     <script type="text/javascript" src="/assets/tristar/teamlink/teamlink.controller.js?compile=true"></script>
+    <script type="text/javascript" src="/assets/tristar/createteam/createteam.controller.js?compile=true"></script>
 
     <!-- Components -->
     <script type="text/javascript" src="/assets/tristar/taskview/taskview.component.js?compile=true"></script>

@@ -41,4 +41,27 @@ function TristarContentUploaderService ($http, ApiPath) {
         return $http(config);
     };
 
+    /**
+     * Sends a request to create a team
+     * @param {String} token        Token of the current user
+     * @param {String} name         Name of task
+     * @param {String} description  Description of task
+     * @return {Promise}
+     */
+    service.createTeam = function (token, name, description) {
+        var config = {
+            method: "POST",
+            url: ApiPath + "team",
+            data: {
+                name: name,
+                description: description
+            },
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + token
+            }
+        };
+        return $http(config);
+    };
+
 }
