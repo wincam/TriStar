@@ -9,18 +9,18 @@
     <div class="form-group">
         <label for="inputTeamDescription" class="col-sm-2 control-label">Description</label>
         <div class="col-sm-10">
-            <textarea class="form-control" id="inputTeamDescription" rows="5" placeholder="Description" ng-model="createTeamCtrl.description" required></textarea>
+            <textarea class="form-control" id="inputTeamDescription" rows="5" placeholder="Description" ng-model="createTeamCtrl.description"></textarea>
         </div>
     </div>
 
     <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
-            <button type="submit" class="btn btn-default" ng-disabled="creatTeamForm.$invalid" ng-click="createTeamCtrl.submit()">Sign Up</button>
+            <button type="submit" class="btn btn-default" ng-disabled="creatTeamForm.$invalid" ng-click="createTeamCtrl.submit()">Create Team</button>
         </div>
     </div>
 </form>
 
 <!-- Team creation up failed alert -->
-<div class="alert alert-danger" role="alert" ng-if="createTeamCtrl.createTeamError">
+<div class="alert alert-danger create-team-error-alert" role="alert" ng-if="createTeamCtrl.createTeamError">
     <strong>Oh Shoot!</strong> Team could not be created!
 </div>

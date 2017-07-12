@@ -13,7 +13,7 @@
 }
 
 /* taskview */
-.task-view, .team-info, .create-team-form {
+.task-view, .team-info, .create-team-form, .create-team-error-alert {
     margin: 10pt;
 }
 
