@@ -1,46 +1,58 @@
-<div class="row">
-    <div class="col-lg-3">
-
-        <!-- Team list -->
-        <div class="panel panel-default team-name-list-panel">
-            <div class="panel-heading">
-                <h3 class="panel-title">Teams</h3>
-            </div>
-            <ul class="list-group">
-                <li class="list-group-item" ng-repeat="team in loggedInWindowCtrl.teams">
-                    <team-link teamname="team"></team-link>
-                </li>
-            </ul>
-
-            <div class="panel-footer create-new-task-nav" >
-                <button class="btn btn-default" ui-sref="loggedinwindow.createteam">Create new Team</button>
+<div class="logged-in-window">
+    <!-- Navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" ui-sref="loggedinwindow.home">
+                    <i class="fa fa-home fa-2x navbar-brand-logo" aria-hidden="true"></i>
+                </a>
             </div>
         </div>
+    </nav>
+    <div class="row">
+        <div class="col-lg-3">
 
-        <!-- User list -->
-        <div class="panel panel-default username-list-panel">
-            <div class="panel-heading">
-                <h3 class="panel-title">Users</h3>
-            </div>
-            <ul class="list-group">
-                <li class="list-group-item" ng-repeat="user in loggedInWindowCtrl.userList">
-                    <user-link username="user"></user-link>
-                </li>
-            </ul>
+            <!-- Team list -->
+            <div class="panel panel-default team-name-list-panel">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Teams</h3>
+                </div>
+                <ul class="list-group">
+                    <li class="list-group-item" ng-repeat="team in loggedInWindowCtrl.teams">
+                        <team-link teamname="team"></team-link>
+                    </li>
+                </ul>
 
-            <!-- User list nav buttons -->
-            <div class="panel-footer user-list-nav">
-                <div class="btn-group" role="group" aria-label="...">
-                    <button class="btn btn-default" ng-disabled="loggedInWindowCtrl.userPage <= 0" ng-click="loggedInWindowCtrl.userListPreviousPage()">&larr; Previous</button>
-                    <button class="btn btn-default" ng-disabled="loggedInWindowCtrl.userList.length != 20" ng-click="loggedInWindowCtrl.userListNextPage()">Next &rarr;</button>
+                <div class="panel-footer create-new-task-nav" >
+                    <button class="btn btn-default" ui-sref="loggedinwindow.createteam">Create new Team</button>
                 </div>
             </div>
 
+            <!-- User list -->
+            <div class="panel panel-default username-list-panel">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Users</h3>
+                </div>
+                <ul class="list-group">
+                    <li class="list-group-item" ng-repeat="user in loggedInWindowCtrl.userList">
+                        <user-link username="user"></user-link>
+                    </li>
+                </ul>
+
+                <!-- User list nav buttons -->
+                <div class="panel-footer user-list-nav">
+                    <div class="btn-group" role="group" aria-label="...">
+                        <button class="btn btn-default" ng-disabled="loggedInWindowCtrl.userPage <= 0" ng-click="loggedInWindowCtrl.userListPreviousPage()">&larr; Previous</button>
+                        <button class="btn btn-default" ng-disabled="loggedInWindowCtrl.userList.length != 20" ng-click="loggedInWindowCtrl.userListNextPage()">Next &rarr;</button>
+                    </div>
+                </div>
+
+
+            </div>
 
         </div>
-
-    </div>
-    <div class="col-lg-9">
-        <ui-view></ui-view>
+        <div class="col-lg-9">
+            <ui-view></ui-view>
+        </div>
     </div>
 </div>

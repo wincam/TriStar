@@ -13,6 +13,22 @@ textarea {
     padding: 15pt;
 }
 
+/* nav bar */
+.logged-in-window {
+    padding-top: 70px;
+}
+
+.navbar-brand-logo {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.navbar-brand {
+     display: flex;
+     align-items: center;
+     padding: 0 15px;
+}
+
 /* home */
 .user-list-nav, .create-new-task-nav {
     text-align:center;
