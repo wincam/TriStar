@@ -8,7 +8,7 @@ angular.module('tristar')
 
 CreateTeamController.$inject = ["$state", "TristarApiService"];
 /**
- * Controller for task state
+ * Controller for the create team state
  * @memberOf tristar
  */
 function CreateTeamController ($state, TristarApiService) {
@@ -19,10 +19,13 @@ function CreateTeamController ($state, TristarApiService) {
 
     ctrl.createTeamError = false;
 
+    /**
+     * Submits create team form and goes to home if successful
+     */
     ctrl.submit = function () {
-        TristarApiService.createTeam(ctrl.name, ctrl.description).then(function (taskCreated) {
-            ctrl.createTeamError = !taskCreated;
-            if (taskCreated){
+        TristarApiService.createTeam(ctrl.name, ctrl.description).then(function (teamCreated) {
+            ctrl.createTeamError = !teamCreated;
+            if (teamCreated){
                 $state.go("loggedinwindow.home", {}, {reload: true});
             }
         });
