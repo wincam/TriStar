@@ -62,7 +62,7 @@ class TaskController extends RestfulController {
             return
         }
 
-        Date dueDate = Date.parse("d/M/yyyy H:m:s",request.JSON.dueDate.toString())
+        Date dueDate = Date.parse("yyyy-MM-dd'T'HH:mm:ss.SSSXXX",request.JSON.dueDate.toString())
         // check if date is valid
         if (dueDate == null){
             render (status: 400, text: "Date is invalid")
