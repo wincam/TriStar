@@ -1,5 +1,11 @@
 /* bootstrap required css */
-.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+.nav, .pagination, .carousel, .panel-title a {
+    cursor: pointer;
+}
+
+textarea {
+    resize: none;
+}
 
 /* login */
 .loginForm, .sign-up-form {
@@ -12,11 +18,40 @@
     text-align:center;
 }
 
-/* taskview */
-.task-view, .team-info, .create-team-form, .create-team-error-alert {
+/* forms */
+.task-view, .team-info, .create-team-form, .create-team-error-alert, .create-task-form, .create-task-error-alert {
     margin: 10pt;
 }
 
-.create-team-form {
+.create-team-form, .create-task-form {
     padding: 15pt;
+}
+
+
+/* task creation */
+.user-selector-button, .assignee-selector-panel {
+    padding: 0;
+}
+
+.user-selector-button > * {
+    padding: 10px 15px;
+}
+
+#inputTaskAssignees {
+    margin: 0;
+    height: auto;
+}
+
+.assignee-selector-panel > .panel {
+    margin-bottom: 0;
+}
+
+/* spread selector panels */
+@media (min-width: 992px) {
+    #userSearchPanel {
+        margin-right: 5pt;
+    }
+    #displayAssigneePanel {
+        margin-left: 5pt;
+    }
 }

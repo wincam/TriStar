@@ -2,6 +2,9 @@
     <div class="panel-heading">
         <h1 class="panel-title">{{teamCtrl.team["name"]}}</h1>
     </div>
-    <div class="panel-body">{{teamCtrl.team["description"]}}</div>
+    <div class="panel-body">
+        <div>{{teamCtrl.team["description"]}}</div>
+        <button class="btn btn-default" ui-sref="loggedinwindow.createtask({teamName: teamCtrl.team['name']})">Add New Task</button>
+    </div>
 </div>
 <task-list tasks="teamCtrl.tasks"></task-list>

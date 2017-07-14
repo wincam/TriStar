@@ -132,6 +132,17 @@ function routeConfig ($stateProvider, $urlRouterProvider) {
             controller: "CreateTeamController",
             controllerAs: "createTeamCtrl",
             templateUrl: "/assets/tristar/createteam/createteam.html"
+        })
+        .state("loggedinwindow.createtask",{
+            url: "/team/{teamName:string}/createtask",
+            controller: "CreateTaskController",
+            controllerAs: "createTaskCtrl",
+            templateUrl: "/assets/tristar/createtask/createtask.html",
+            resolve: {
+                team: ["TristarApiService", "$stateParams", function (TristarApiService, $stateParams) {
+                    return TristarApiService.getTeam($stateParams.teamName);
+                }]
+            }
         });
 
     $urlRouterProvider.otherwise("/login");

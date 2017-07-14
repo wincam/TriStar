@@ -171,12 +171,35 @@ function TristarApiService ($q, TristarContentDownloaderService, TristarContentU
      * Creates a team
      * @param {String} name         Name of the team
      * @param {String} description  Description of team
+     * @return {Promise}
      */
     service.createTeam = function (name, description) {
         return TristarContentUploaderService.createTeam(service.accessToken, name, description).then(function success () {
             // team created
             // clear user
             service.currentUser = undefined;
+            return true;
+        }, function failure () {
+            // team not created
+            return false;
+        });
+    };
+
+    /**
+     * Creates an tanks
+     * @param {String} name         Name of task
+     * @param {String} description  Description of the task
+     * @param {List} assignees      A list of assignees for the task
+     * @param {Date} dueDate        Date the task is due to be completed
+     * @param {String} team         Team the task is in
+     * @return {Promise}
+     */
+    service.createTask = function (name, description, assignees, dueDate, team) {
+        return TristarContentUploaderService.createTask(service.accessToken, name, description, assignees, dueDate, team).then(function success () {
+            // task created
+            // clear team and user
+            service.currentUser = undefined;
+            delete service.teams[team];
             return true;
         }, function failure () {
             // team not created

@@ -64,4 +64,33 @@ function TristarContentUploaderService ($http, ApiPath) {
         return $http(config);
     };
 
+    /**
+     * Sends a request to create a task
+     * @param {String} token        Token of the current user
+     * @param {String} name         Name of task
+     * @param {String} description  Description of the task
+     * @param {List} assignees      A list of assignees for the task
+     * @param {Date} dueDate        Date the task is due to be completed
+     * @param {String} team         Team the task is in
+     * @return {Promise}
+     */
+    service.createTask = function (token, name, description, assignees, dueDate, team) {
+        var config = {
+            method: "POST",
+            url: ApiPath + "task",
+            data: {
+                name: name,
+                description: description,
+                assignees: assignees,
+                dueDate: dueDate,
+                team: team
+            },
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + token
+            }
+        };
+        return $http(config);
+    }
+
 }
