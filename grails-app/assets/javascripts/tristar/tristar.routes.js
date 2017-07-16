@@ -29,6 +29,7 @@ function routeConfig ($stateProvider, $urlRouterProvider) {
             templateUrl: "/assets/tristar/signup/signup.html"
         })
         .state("loggedinwindow",{
+            abstract: true,
             params: {
                 userPageId : {
                     type: "int",

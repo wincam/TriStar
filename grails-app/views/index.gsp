@@ -61,5 +61,20 @@
 <body ng-app="tristar" ng-strict-di="true">
 
     <ui-view></ui-view>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 text-muted">
+                    <a href="http://www.leagueoflogic.ca/" target="_blank">League of Logic - 5870</a> <a href="https://www.facebook.com/Team-5870-League-of-Logic-526261424196392" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a> <a href="https://twitter.com/frc5870" target="_blank"><i class="fa fa-twitter"></i></a> <a href="https://www.instagram.com/team5870" target="_blank"><i class="fa fa-instagram"></i></a>
+                </div>
+                <div class="col-xs-12 text-muted">
+                    <a href="https://github.com/wincam/TriStar" target="_blank">Tristar <i class="fa fa-github" aria-hidden="true"></i></a>
+                </div>
+                <div class="col-xs-12 text-muted" id="copyright">&copy; Copyright 2017|Cameron Nicolle</div>
+            </div>
+        </div>
+    </footer>
+
 </body>
 </html>
