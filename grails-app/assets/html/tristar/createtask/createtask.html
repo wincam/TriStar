@@ -17,32 +17,7 @@
     <div class="form-group">
         <label for="inputTaskAssignees" class="col-sm-2 control-label">Assignees</label>
         <div class="col-sm-10">
-            <div class="row form-control" id="inputTaskAssignees" ng-class="{'ng-invalid': (createTaskCtrl.assignees.length === 0)}">
-                <!-- Search users panel -->
-                <div class="col-md-6 assignee-selector-panel">
-                    <div class="panel panel-default" id="userSearchPanel">
-                        <div class="panel-heading">Search Users</div>
-                        <div class="panel-body">
-                            <input type="text" class="form-control" id="searchTeamUsers" placeholder="Search" ng-change="createTaskCtrl.searchUser()" ng-model="createTaskCtrl.userSearchTerm">
-                        </div>
-                        <ul class="list-group">
-                            <user-selector-button ng-repeat="user in createTaskCtrl.searchedUsers" username="user" status="createTaskCtrl.assignedUser(user)" select="createTaskCtrl.selectUser(username)"></user-selector-button>
-                        </ul>
-                    </div>
-                </div>
-                <!-- Selected users panel -->
-                <div class="col-md-6 assignee-selector-panel">
-                    <div class="panel panel-default" id="displayAssigneePanel">
-                        <div class="panel-heading">Selected Assignees</div>
-                        <ul class="list-group">
-                            <user-selector-button ng-repeat="user in createTaskCtrl.assignees" username="user" status="createTaskCtrl.assignedUser(user)" select="createTaskCtrl.selectUser(username)"></user-selector-button>
-                        </ul>
-                    </div>
-                </div>
-
-
-
-            </div>
+            <user-selector class="form-control" id="inputTaskAssignees" usernames="createTaskCtrl.users" selectedusernames="createTaskCtrl.assignees" select="createTaskCtrl.selectUser(username)"></user-selector>
         </div>
     </div>
 
@@ -63,7 +38,7 @@
 
     <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
-            <button type="submit" class="btn btn-default" ng-disabled="createTaskForm.$invalid" ng-click="createTaskCtrl.submit()">Create Task</button>
+            <button type="submit" class="btn btn-default" ng-disabled="createTaskForm.$invalid || (createTaskCtrl.assignees.length === 0)" ng-click="createTaskCtrl.submit()">Create Task</button>
         </div>
     </div>
 </form>

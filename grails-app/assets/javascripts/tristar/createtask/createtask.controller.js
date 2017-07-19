@@ -19,26 +19,7 @@ function CreateTaskController ($stateParams, $state, TristarApiService, team) {
     ctrl.dueDate = new Date();
 
     // user search box data
-    var users = team["captains"].concat(team["members"]);
-    ctrl.userSearchTerm = "";
-    ctrl.searchedUsers = [];
-
-    /**
-     * Compiles list of searched users
-     */
-    ctrl.searchUser = function () {
-        ctrl.searchedUsers = [];
-        for (var username in users){
-            if (users.hasOwnProperty(username)) {
-               if (users[username].toLowerCase().includes(ctrl.userSearchTerm.toLowerCase())){
-                   ctrl.searchedUsers.push(users[username]);
-               }
-            }
-        }
-    };
-
-    // prepopulate searched users
-    ctrl.searchUser();
+    ctrl.users = team["captains"].concat(team["members"]);
 
     /**
      * Adds or removes user from ctrl.assignees

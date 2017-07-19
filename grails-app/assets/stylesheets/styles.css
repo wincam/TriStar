@@ -64,9 +64,10 @@ footer a {
 }
 
 /* forms */
+/*
 .task-view, .team-info, .create-team-form, .create-team-error-alert, .create-task-form, .create-task-error-alert {
     margin: 10pt;
-}
+}*/
 
 .create-team-form, .create-task-form {
     padding: 15pt;
@@ -87,16 +88,16 @@ footer a {
     height: auto;
 }
 
-.assignee-selector-panel > .panel {
+.user-selector-panel > .panel {
     margin-bottom: 0;
 }
 
 /* spread selector panels */
 @media (min-width: 992px) {
-    #userSearchPanel {
+    .user-search-panel {
         margin-right: 5pt;
     }
-    #displayAssigneePanel {
+    .selected-users-panel {
         margin-left: 5pt;
     }
 }
