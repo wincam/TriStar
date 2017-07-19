@@ -22,8 +22,6 @@ function UserSelectorController () {
      * Compiles list of searched users
      */
     ctrl.searchUser = function () {
-        console.log(ctrl.usernames);
-        console.log(ctrl.selectedusernames);
         ctrl.searchedUsers = [];
         for (var username in ctrl.usernames){
             if (ctrl.usernames.hasOwnProperty(username)) {
