@@ -7,4 +7,30 @@
         <button class="btn btn-default" ui-sref="loggedinwindow.createtask({teamName: teamCtrl.team['name']})">Add New Task</button>
     </div>
 </div>
+
+<!-- Add users to team dialog -->
+<div class="panel panel-default" ng-if="teamCtrl.isCaptain">
+    <div class="panel-heading">Add to team</div>
+    <div class="panel-body">
+        <uib-tabset>
+            <uib-tab heading="Add members">
+                <form>
+                    <user-selector class="form-control" id="addMembersUserSelector" usernames="teamCtrl.nonMembers" selectedusernames="teamCtrl.selectedNonMembers" select="teamCtrl.selectUser(teamCtrl.selectedNonMembers, username)"></user-selector>
+                    <button type="submit" class="btn btn-default" ng-disabled="!teamCtrl.selectedNonMembers.length" ng-click="teamCtrl.addUser('members', teamCtrl.selectedNonMembers)">Add Members</button>
+                </form>
+
+            </uib-tab>
+            <uib-tab heading="Add captains">
+                <form>
+                    <user-selector class="form-control" id="addCaptainsUserSelector" usernames="teamCtrl.nonCaptains" selectedusernames="teamCtrl.selectedNonCaptains" select="teamCtrl.selectUser(teamCtrl.selectedNonCaptains, username)"></user-selector>
+                    <button type="submit" class="btn btn-default" ng-disabled="!teamCtrl.selectedNonCaptains.length" ng-click="teamCtrl.addUser('captains', teamCtrl.selectedNonCaptains)">Add Captains</button>
+                </form>
+            </uib-tab>
+        </uib-tabset>
+        <div class="alert alert-danger create-task-error-alert" role="alert" ng-if="teamCtrl.addUserError">
+            <strong>Oh Shoot!</strong> Users couldn't be added.
+        </div>
+    </div>
+</div>
+
 <task-list tasks="teamCtrl.tasks"></task-list>

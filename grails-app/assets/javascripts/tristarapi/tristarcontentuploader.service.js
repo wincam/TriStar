@@ -6,14 +6,14 @@
 
 angular.module("tristarapi").service("TristarContentUploaderService",TristarContentUploaderService);
 
-TristarContentUploaderService.$inject = ["$http", "ApiPath"];
+TristarContentUploaderService.$inject = ["$q", "$http", "ApiPath"];
 /**
  * Service that processes all uploads to the Tristar REST API
  * @memberOf tristarapi
  * @param $http     Angular $http service
  * @param ApiPath   The hostname and path to the Tristar API
  */
-function TristarContentUploaderService ($http, ApiPath) {
+function TristarContentUploaderService ($q, $http, ApiPath) {
     var service = this;
 
     /**
@@ -57,7 +57,7 @@ function TristarContentUploaderService ($http, ApiPath) {
                 description: description
             },
             headers: {
-                "Content-Type": "application/json",
+                "Content-Type": "application/json",url: ApiPath + "teammember/" + teamName,
                 "Authorization": "Bearer " + token
             }
         };
@@ -91,6 +91,40 @@ function TristarContentUploaderService ($http, ApiPath) {
             }
         };
         return $http(config);
-    }
+    };
+
+    /**
+     * Sends a request to add members to a team
+     * @param {String} token    Token of the current user
+     * @param {String} teamName Name of team to add to
+     * @param {List} usernames  List of usernames
+     * @param {String} type     member of captain
+     * @return {Promise}
+     */
+    service.addUsersToTeam = function (token, teamName, usernames, type) {
+        var defer = $q.defer();
+
+        // get url
+        if (type.toLowerCase() === "members"){
+            defer.resolve(ApiPath + "teammember/" + teamName);
+        } else if (type.toLowerCase() === "captains") {
+            defer.resolve(ApiPath + "teamcaptain/" + teamName);
+        } else {
+            defer.reject();
+        }
+
+        return defer.promise.then(function success (url) {
+            var config = {
+                method: "POST",
+                url: url,
+                data: usernames,
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": "Bearer " + token
+                }
+            };
+            return $http(config);
+        });
+    };
 
 }

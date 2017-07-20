@@ -150,6 +150,17 @@ function TristarApiService ($q, TristarContentDownloaderService, TristarContentU
     service.getUser = service.cachingGetterFactory(service.users, TristarContentDownloaderService.loadUser, "user");
 
     /**
+     * Gets a list of users with filters applied
+     * @param {Number} pageId           Id of page to download
+     * @param {String} [nonTeamMember]  Id of team that users are not members of
+     * @param {String} [nonTeamCaptain] Id of team that users are not captains of
+     * @return {Promise}
+     */
+    service.getFilteredUserList = function (pageId, nonTeamMember, nonTeamCaptain) {
+        return TristarContentDownloaderService.loadUserList(service.accessToken, pageId, nonTeamMember, nonTeamCaptain);
+    };
+
+    /**
      * Creates a user
      * @param {String} username Username of the user
      * @param {String} email    Email of the user
@@ -205,6 +216,22 @@ function TristarApiService ($q, TristarContentDownloaderService, TristarContentU
             // team not created
             return false;
         });
+    };
+
+    /**
+     * Adds users to a team
+     * @param {String} teamName Name of team to add to
+     * @param {List} usernames  List of usernames
+     * @param {String} type     member of captain
+     * @return {Promise}
+     */
+    service.addUsersToTeam = function (teamName, usernames, type) {
+        return TristarContentUploaderService.addUsersToTeam(service.accessToken, teamName, usernames, type).then(function success () {
+            delete service.teams[teamName];
+            return true;
+        }, function failure () {
+            return false;
+        })
     };
 
 

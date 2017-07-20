@@ -83,8 +83,7 @@ footer a {
     padding: 10px 15px;
 }
 
-#inputTaskAssignees {
-    margin: 0;
+user-selector, user-selector.form-control {
     height: auto;
 }
 
@@ -95,6 +94,12 @@ footer a {
 .user-selector-button-list {
     max-height: 300px;
     overflow-y: scroll;
+}
+
+/* team */
+#addCaptainsUserSelector, #addMembersUserSelector {
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
 
 /* spread selector panels */

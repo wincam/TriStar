@@ -58,11 +58,13 @@ function TristarContentDownloaderService ($http, ApiPath) {
 
     /**
      * Requests a page of users
-     * @param {String} token     Token of the user
-     * @param {Number} pageId    Id of page to request
+     * @param {String} token            Token of the user
+     * @param {Number} pageId           Id of page to request
+     * @param {String} [nonTeamMember]  Id of team that users are not members of
+     * @param {String} [nonTeamCaptain] Id of team that users are not members of
      * @return {Promise} Response from server or null
      */
-    service.loadUserList = function (token, pageId){
+    service.loadUserList = function (token, pageId, nonTeamMember, nonTeamCaptain){
         var config = {
             method: "GET",
             url: ApiPath + "users",
@@ -72,10 +74,16 @@ function TristarContentDownloaderService ($http, ApiPath) {
             }
         };
 
+        //adds filters
+        if (nonTeamCaptain){
+            config.params.notcaptain = nonTeamCaptain;
+        }
+
+        if (nonTeamMember){
+            config.params.notmember = nonTeamMember;
+        }
+
         return service.sendRequest(config);
-
-
-
     };
 
     /**

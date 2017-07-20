@@ -125,6 +125,38 @@ function routeConfig ($stateProvider, $urlRouterProvider) {
                     }
                     // evaluate list of tasks
                     return $q.all(tasks);
+                }],
+                nonMembers: ["TristarApiService", "$stateParams", function (TristarApiService, $stateParams) {
+                    /**
+                     * Recursively gets all users that are not a member of this team
+                     * @param pageId    Id of page
+                     * @param userList  State of user list
+                     */
+                    function getUserPage (pageId, userList) {
+                        return TristarApiService.getFilteredUserList(pageId, $stateParams.teamName, $stateParams.teamName).then(function (page) {
+                            if (page.length === 20){
+                                return getUserPage(pageId + 1, userList.concat(page));
+                            }
+                            return userList.concat(page);
+                        });
+                    }
+                    return getUserPage(0, []);
+                }],
+                nonCaptains: ["TristarApiService", "$stateParams", function (TristarApiService, $stateParams) {
+                    /**
+                     * Recursively gets all users that are not a member of this team
+                     * @param pageId    Id of page
+                     * @param userList  State of user list
+                     */
+                    function getUserPage (pageId, userList) {
+                        return TristarApiService.getFilteredUserList(pageId, null, $stateParams.teamName).then(function (page) {
+                            if (page.length === 20){
+                                return getUserPage(pageId + 1, userList.concat(page));
+                            }
+                            return userList.concat(page);
+                        });
+                    }
+                    return getUserPage(0, []);
                 }]
             }
         })
