@@ -92,6 +92,11 @@ footer a {
     margin-bottom: 0;
 }
 
+.user-selector-button-list {
+    max-height: 300px;
+    overflow-y: scroll;
+}
+
 /* spread selector panels */
 @media (min-width: 992px) {
     .user-search-panel {

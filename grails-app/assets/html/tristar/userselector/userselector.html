@@ -6,7 +6,7 @@
             <div class="panel-body">
                 <input type="text" class="form-control search-users" placeholder="Search" ng-change="userSelectorCtrl.searchUser()" ng-model="userSelectorCtrl.userSearchTerm">
             </div>
-            <ul class="list-group">
+            <ul class="list-group user-selector-button-list">
                 <user-selector-button ng-repeat="user in userSelectorCtrl.searchedUsers" username="user" status="userSelectorCtrl.isUserSelected(user)" select="userSelectorCtrl.selectUser(username)"></user-selector-button>
             </ul>
         </div>
@@ -15,7 +15,7 @@
     <div class="col-md-6 user-selector-panel">
         <div class="panel panel-default selected-users-panel">
             <div class="panel-heading">Selected Users</div>
-            <ul class="list-group">
+            <ul class="list-group user-selector-button-list">
                 <user-selector-button ng-repeat="user in userSelectorCtrl.selectedusernames" username="user" status="userSelectorCtrl.isUserSelected(user)" select="userSelectorCtrl.selectUser(username)"></user-selector-button>
             </ul>
         </div>
